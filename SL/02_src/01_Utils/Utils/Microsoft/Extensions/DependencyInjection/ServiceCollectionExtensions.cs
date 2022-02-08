@@ -1,6 +1,8 @@
 ﻿namespace Microsoft.Extensions.DependencyInjection
 {
     using Microsoft.Extensions.DependencyInjection;
+    using SL.Utils.DependencyInjection;
+    using SL.Utils.Extensions;
     using SL.Utils.Helpers;
     using System;
     using System.Collections.Generic;
@@ -53,10 +55,26 @@
         /// <returns></returns>
         public static IServiceCollection AddServicesFromAssembly(this IServiceCollection services, Assembly assembly)
         {
-            foreach (var type in assembly.GetTypes())
+            var singletons = assembly.GetTypes()
+                              .Where(m => !m.IsInterface && typeof(ISingletonDependency).IsImplementType(m)).ToList();
+            foreach (var item in singletons)
             {
-
+                services.AddSingleton(item);
             }
+            var transients = assembly.GetTypes()
+                             .Where(m => !m.IsInterface && typeof(ITransientDependency).IsImplementType(m)).ToList();
+            foreach (var item in transients)
+            {
+                services.AddTransient(item);
+            }
+            var scopeds = assembly.GetTypes()
+                             .Where(m => !m.IsInterface && typeof(IScopedDependency).IsImplementType(m)).ToList();
+            foreach (var item in scopeds)
+            {
+                services.AddScoped(item);
+            }
+
+
             return services;
         }
     }
