@@ -10,13 +10,13 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
 	</ItemGroup>
+	
 	<ItemGroup>
-		<ProjectReference Include="..\..\02_Data\Data.Core\Data.Core.csproj" />
-		<ProjectReference Include="..\..\03_Module\Module.Abstractions\Module.Abstractions.csproj" />
-		<ProjectReference Include="..\..\03_Module\Module.Web\Module.Web.csproj" />
-		<ProjectReference Include="..\..\04_Auth\Auth.Jwt\Auth.Jwt.csproj" />
-		<ProjectReference Include="..\..\05_Cache\Cache.Memory\Cache.Memory.csproj" />
-		<ProjectReference Include="..\..\05_Cache\Cache.Redis\Cache.Redis.csproj" />
-		<ProjectReference Include="..\..\06_Mapper\Mapper\Mapper.csproj" />
+	  <ProjectReference Include="..\..\02_Data\Data.Core\Data.Core.csproj" />
+	  <ProjectReference Include="..\..\03_Module\Module.Web\Module.Web.csproj" />
+	  <ProjectReference Include="..\..\04_Auth\Auth.Jwt\Auth.Jwt.csproj" />
+	  <ProjectReference Include="..\..\05_Cache\Cache.Memory\Cache.Memory.csproj" />
+	  <ProjectReference Include="..\..\05_Cache\Cache.Redis\Cache.Redis.csproj" />
+	  <ProjectReference Include="..\..\06_Mapper\Mapper\Mapper.csproj" />
 	</ItemGroup>
 </Project>
