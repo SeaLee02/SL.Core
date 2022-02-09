@@ -1,1 +1,1 @@
-# <center>SL.Core</center>
+# SL.Core
