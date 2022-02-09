@@ -5,4 +5,8 @@
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Utils\Utils.csproj" />
+	</ItemGroup>
+
 </Project>

@@ -4,5 +4,14 @@
 		<Description>数据具体实现</Description>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	</PropertyGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="Castle.Core" Version="4.4.1" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="..\..\03_Module\Module.Abstractions\Module.Abstractions.csproj" />
+	  <ProjectReference Include="..\Data.Abstractions\Data.Abstractions.csproj" />
+	</ItemGroup>
 
 </Project>

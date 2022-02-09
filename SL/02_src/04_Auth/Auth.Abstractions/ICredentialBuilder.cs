@@ -1,0 +1,23 @@
+﻿using SL.Utils.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SL.Auth.Abstractions
+{
+    /// <summary>
+    /// 认证凭证构造器
+    /// </summary>
+    public interface ICredentialBuilder
+    {
+        /// <summary>
+        /// 生成凭证
+        /// </summary>
+        /// <param name="claims">账户声明</param>
+        /// <returns></returns>
+        Task<IResultModel> Build(List<Claim> claims);
+    }
+}

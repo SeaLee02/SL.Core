@@ -4,5 +4,11 @@
 		<Description>模块化抽象</Description>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	</PropertyGroup>
-
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\01_Utils\Utils\Utils.csproj" />
+	</ItemGroup>
 </Project>
