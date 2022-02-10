@@ -9,7 +9,7 @@ namespace SL.Data.Abstractions.Entities
     /// <summary>
     /// 实体租户扩展
     /// </summary>
-    public interface ITenant<TKey>
+    public interface ISLTenant<TKey>
     {
         /// <summary>
         /// 租户编号
@@ -20,7 +20,7 @@ namespace SL.Data.Abstractions.Entities
     /// <summary>
     /// 实体租户扩展
     /// </summary>
-    public interface ITenant : ITenant<Guid?>
+    public interface ISLTenant : ISLTenant<Guid?>
     {
 
     }

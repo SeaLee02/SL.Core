@@ -115,7 +115,7 @@ namespace Microsoft.Extensions.DependencyInjection
                             {
                                 FilterValue = filter =>
                                 {
-                                    return new SqlFilterResult { Sql = " Deleted=0 " };
+                                    return new SqlFilterResult { Sql = " IsDeleted=0 " };
                                 }
                             });
 
@@ -124,7 +124,7 @@ namespace Microsoft.Extensions.DependencyInjection
                                 //多表过滤,多表统一设置 a,b.c...以此类推
                                 FilterValue = filter =>
                                 {
-                                    return new SqlFilterResult { Sql = " a.Deleted=0 " };
+                                    return new SqlFilterResult { Sql = " a.IsDeleted=0 " };
                                 },
                                 IsJoinQuery = true
                             });

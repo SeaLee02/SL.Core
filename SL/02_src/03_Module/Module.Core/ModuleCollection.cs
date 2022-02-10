@@ -100,10 +100,10 @@
         private void LoadLayerAssemblies(ModuleDescriptor descriptor)
         {
             var layer = descriptor.LayerAssemblies;
-            layer.Core = _assemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mod.{descriptor.Code}.Core");
-            layer.Web = _assemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mod.{descriptor.Code}.Web");
-            //layer.Api = _assemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mod.{descriptor.Code}.Api");
-            //layer.Client = _assemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mod.{descriptor.Code}.Client");
+            layer.Core = _assemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mkh.{descriptor.Code}.Core");
+            layer.Web = _assemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mkh.{descriptor.Code}.Web");
+            //layer.Api = _assemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mkh.{descriptor.Code}.Api");
+            //layer.Client = _assemblyHelper.LoadByNameEndString($"{Constants.PREFIX}.Mkh.{descriptor.Code}.Client");
         }
 
 

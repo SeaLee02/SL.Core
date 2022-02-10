@@ -23,7 +23,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IModuleCollection AddModulesCore(this IServiceCollection services, IHostEnvironment environment, IConfiguration configuration)
         {
-            var moduleOptionsList = configuration.Get<List<ModuleOptions>>("Lh:Modules");
+            var moduleOptionsList = configuration.Get<List<ModuleOptions>>("SL:Modules");
 
             var modules = new ModuleCollection(environment);
             modules.Load(moduleOptionsList);

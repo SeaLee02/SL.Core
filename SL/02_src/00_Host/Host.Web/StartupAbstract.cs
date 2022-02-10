@@ -126,7 +126,7 @@ namespace SL.Host.Web
             Console.WriteLine();
             Console.WriteLine(@" ***************************************************************************************************************");
             Console.WriteLine(@" *                                                                                                             *");
-            Console.WriteLine(@" *                           ______   __             ______                                              *");
+            Console.WriteLine(@" *                           ______   __             ______                                                    *");
             Console.WriteLine(@" *                          /      \ /  |           /      \                                                   *");
             Console.WriteLine(@" *                         /$$$$$$  |$$ |          /$$$$$$  |  ______    ______    ______                      *");
             Console.WriteLine(@" *                         $$ \__$$/ $$ |          $$ |  $$/  /      \  /      \  /      \                     *");
@@ -138,7 +138,7 @@ namespace SL.Host.Web
             Console.WriteLine(@" *                                                                                                             *");
             Console.Write(@" *                                      ");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(@$"启动成功，欢迎使用 SAAS平台~~");
+            Console.Write(@$"启动成功，欢迎使用 SL.Core平台~~          ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(@"                             *");
             Console.WriteLine(@" *                                                                                                             *");
@@ -146,7 +146,7 @@ namespace SL.Host.Web
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(@"接口地址：" + options.Urls);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(@"                                                *");
+            Console.WriteLine(@"                                        *");
             Console.WriteLine(@" *                                                                                                             *");
             Console.WriteLine(@" ***************************************************************************************************************");
             Console.WriteLine();

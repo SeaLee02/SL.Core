@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\02_src\00_Host\Host.Web\Host.Web.csproj" />
+    <ProjectReference Include="..\01_Admin\Admin.Web\Admin.Web.csproj" />
+  </ItemGroup>
+
 </Project>

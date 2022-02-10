@@ -40,5 +40,16 @@ namespace SL.Auth.Abstractions
         /// 客户IP
         /// </summary>
         public const string IP = "ip";
+
+        /// <summary>
+        /// 角色集合
+        /// </summary>
+        public const string ROLES = "roles";
+
+
+        /// <summary>
+        /// 组织Id
+        /// </summary>
+        public const string ORG_ID = "orgid";
     }
 }

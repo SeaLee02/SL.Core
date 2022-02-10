@@ -79,7 +79,7 @@
 
             //设置默认端口
             if (hostOptions.Urls.IsNull())
-                hostOptions.Urls = "http://*:6220";
+                hostOptions.Urls = "http://localhost:6220";
 
             return hostOptions;
         }
