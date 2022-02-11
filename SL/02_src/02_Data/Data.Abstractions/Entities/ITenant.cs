@@ -20,7 +20,7 @@ namespace SL.Data.Abstractions.Entities
     /// <summary>
     /// 实体租户扩展
     /// </summary>
-    public interface ISLTenant : ISLTenant<Guid?>
+    public interface ISLTenant : ISLTenant<Guid>
     {
 
     }

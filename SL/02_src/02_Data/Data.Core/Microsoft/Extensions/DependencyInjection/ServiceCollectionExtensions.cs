@@ -13,6 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SL.Utils.Extensions;
 using SL.Utils.Helpers;
+using SL.Data.Abstractions.Login;
+using SL.Data.Core.Login;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -28,7 +30,13 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddSqlSugarDb(this IServiceCollection services, IHostEnvironment env, IModuleCollection modules)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //添加http上下文访问器，用于获取认证信息
+            services.AddHttpContextAccessor();
 
+            //添加数据访问的账户解析器实现
+            services.AddSingleton<IUserResolver, UserResolver>();
+            ////尝试添加账户信息
+            services.TryAddSingleton<IUser, User>();
 
             //注入仓储层
             //仓储统一放在Repositories目录中
@@ -49,10 +57,7 @@ namespace Microsoft.Extensions.DependencyInjection
                         var proxy = generator!.CreateInterfaceProxyWithTarget(dic.Key, target, interceptor);
                         return proxy;
                     });
-
                 }
-
-
 
                 var repositoryTypes = module.LayerAssemblies.Core.GetTypes()
                                .Where(m => !m.IsInterface && typeof(IRepository).IsImplementType(m))
@@ -69,16 +74,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     services.Add(new ServiceDescriptor(interfaceType, type, ServiceLifetime.Scoped));
                     // module.ApplicationServices.Add(interfaceType, type);
                 }
-
-
-
-
             }
-
-
-
-
-
 
             List<ConnectionConfig> connectionList = new List<ConnectionConfig>();
             foreach (var module in modules)

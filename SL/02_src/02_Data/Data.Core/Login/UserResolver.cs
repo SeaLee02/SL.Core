@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
-using SL.Auth.Abstractions;
 using SL.Data.Abstractions;
+using SL.Data.Abstractions.Login;
+using SL.Utils.Auth;
 using SL.Utils.Extensions;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SL.Auth.Core
+namespace SL.Data.Core.Login
 {
                                          
     internal class UserResolver : IUserResolver

@@ -12,6 +12,12 @@ namespace SL.Data.Abstractions.Entities
     /// <typeparam name="TKey"></typeparam>
     public class EntityBase<TKey> : Entity<TKey>
     {
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public virtual string Remarks { get; set; }
+
         /// <summary>
         /// 创建人编号
         /// </summary>

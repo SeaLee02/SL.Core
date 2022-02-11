@@ -1,0 +1,16 @@
+﻿using SL.Data.Abstractions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SL.Mkh.Admin.Core.Domain.Button
+{
+    public interface IButtonRepository : IRepository<ButtonEntity>
+    {
+
+    }
+
+
+}

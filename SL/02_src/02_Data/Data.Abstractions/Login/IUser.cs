@@ -4,52 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SL.Auth.Abstractions
+namespace SL.Data.Abstractions.Login
 {
     /// <summary>
-    /// 账户信息声明名称
+    /// 账户信息
     /// </summary>
-    public static class SLClaimTypes
+    public interface IUser
     {
         /// <summary>
         /// 租户编号
         /// </summary>
-        public const string TENANT_ID = "td";
+        Guid? TenantId { get; }
 
         /// <summary>
         /// 账户编号
         /// </summary>
-        public const string USER_ID = "id";
+        Guid Id { get; }
 
         /// <summary>
         /// 账户名称
         /// </summary>
-        public const string USER_NAME = "an";
+        string UserName { get; }
 
         /// <summary>
-        /// 平台类型
+        /// 获取当前用户IP(包含IPv和IPv6)
         /// </summary>
-        public const string PLATFORM = "pf";
+        string IP { get; }
 
         /// <summary>
-        /// 登录时间
+        /// 获取当前用户IPv4
         /// </summary>
-        public const string LOGIN_TIME = "lt";
+        string IPv4 { get; }
 
         /// <summary>
-        /// 客户IP
+        /// 获取当前用户IPv6
         /// </summary>
-        public const string IP = "ip";
+        string IPv6 { get; }
 
         /// <summary>
-        /// 角色集合
+        /// 登录时间戳
         /// </summary>
-        public const string ROLES = "roles";
-
+        long LoginTime { get; }
 
         /// <summary>
-        /// 组织Id
+        /// 获取UA
         /// </summary>
-        public const string ORG_ID = "orgid";
+        string UserAgent { get; }
     }
 }

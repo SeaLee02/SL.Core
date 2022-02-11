@@ -1,6 +1,7 @@
 ﻿using Lh.Mkh.Admin.Core.Application.Authorize.Dto;
 using SL.Auth.Abstractions;
 using SL.Mkh.Admin.Core.Domain.User;
+using SL.Utils.Auth;
 using SL.Utils.Models;
 using System;
 using System.Collections.Generic;

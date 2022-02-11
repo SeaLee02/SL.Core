@@ -41,25 +41,25 @@ namespace SL.Utils.Extensions
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
-        public static Week GetWeek(this DateTime datetime)
+        public static WeekEnum GetWeek(this DateTime datetime)
         {
             var dayOfWeek = datetime.DayOfWeek.ToInt();
             switch (dayOfWeek)
             {
                 case 0:
-                    return Week.Sunday;
+                    return WeekEnum.Sunday;
                 case 1:
-                    return Week.Monday;
+                    return WeekEnum.Monday;
                 case 2:
-                    return Week.Tuesday;
+                    return WeekEnum.Tuesday;
                 case 3:
-                    return Week.Wednesday;
+                    return WeekEnum.Wednesday;
                 case 4:
-                    return Week.Thursday;
+                    return WeekEnum.Thursday;
                 case 5:
-                    return Week.Friday;
+                    return WeekEnum.Friday;
                 default:
-                    return Week.Saturday;
+                    return WeekEnum.Saturday;
             }
         }
     }

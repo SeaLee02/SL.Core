@@ -1,5 +1,6 @@
 ﻿using SL.Data.Abstractions;
 using SL.Data.Abstractions.Entities;
+using SL.Data.Abstractions.Login;
 using SqlSugar;
 using System;
 using System.Collections.Generic;

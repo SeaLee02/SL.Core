@@ -21,7 +21,7 @@ namespace SL.Mkh.Admin.Core.Domain.User
         /// <summary>
         /// 租户Id
         /// </summary>
-        public Guid? TenantId { get; set; }
+        public Guid TenantId { get; set; }
 
         /// <summary>
         /// 组织Id
@@ -61,43 +61,10 @@ namespace SL.Mkh.Admin.Core.Domain.User
         public string Email { get; set; }
 
         /// <summary>
-        /// 状态
+        /// 是否启用
         /// </summary>
-        public AccountStatus Status { get; set; }
-
-        /// <summary>
-        /// 激活时间
-        /// </summary>
-        public DateTime ActivatedTime { get; set; } = DateTime.Now;
+        public bool IsEnabled { get; set; } = true;
     }
 
-    /// <summary>
-    /// 账户状态
-    /// </summary>
-    public enum AccountStatus
-    {
-        /// <summary>
-        /// 未知
-        /// </summary>
-        [Description("未知")]
-        UnKnown = -1,
-
-        /// <summary>
-        /// 注册
-        /// </summary>
-        [Description("注册")]
-        Register,
-
-        /// <summary>
-        /// 激活
-        /// </summary>
-        [Description("激活")]
-        Active,
-
-        /// <summary>
-        /// 禁用
-        /// </summary>
-        [Description("禁用")]
-        Disabled
-    }
+    
 }

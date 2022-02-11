@@ -10,7 +10,7 @@ namespace SL.Utils.Enums
     /// <summary>
     /// 星期
     /// </summary>
-    public enum Week
+    public enum WeekEnum
     {
         /// <summary>
         /// 星期一

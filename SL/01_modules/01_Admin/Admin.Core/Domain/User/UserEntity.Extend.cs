@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SL.Mkh.Admin.Core.Domain.User
 {
     /// <summary>
-    /// 用户信息
+    /// 用户关系
     /// </summary>
     public partial class UserEntity
     {

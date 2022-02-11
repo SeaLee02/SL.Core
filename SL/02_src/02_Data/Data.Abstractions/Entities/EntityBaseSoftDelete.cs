@@ -14,7 +14,7 @@ namespace SL.Data.Abstractions.Entities
         /// <summary>
         /// 已删除的
         /// </summary>
-        public virtual bool IsDeleted { get; set; }
+        public virtual bool IsDeleted { get; set; } = false;
 
         /// <summary>
         /// 删除人编号

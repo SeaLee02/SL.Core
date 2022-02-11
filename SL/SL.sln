@@ -77,9 +77,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_Admin", "01_Admin", "{CA
 		01_modules\01_Admin\Directory.Build.props = 01_modules\01_Admin\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.Web", "01_modules\01_Admin\Admin.Web\Admin.Web.csproj", "{CCA214EC-8D85-472C-85E0-44DAE90B93A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Web", "01_modules\01_Admin\Admin.Web\Admin.Web.csproj", "{CCA214EC-8D85-472C-85E0-44DAE90B93A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin.Core", "01_modules\01_Admin\Admin.Core\Admin.Core.csproj", "{428D4F92-677C-4679-8792-5D1A5B2F3EB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Core", "01_modules\01_Admin\Admin.Core\Admin.Core.csproj", "{428D4F92-677C-4679-8792-5D1A5B2F3EB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08_Event", "08_Event", "{2A97D94A-11ED-4704-9FF3-6DFAEEB71DE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -202,6 +204,7 @@ Global
 		{CAEDAC09-7FD4-4DD7-9234-13C867B50428} = {F03172E7-4AF8-4500-93FC-3E7CD44F7901}
 		{CCA214EC-8D85-472C-85E0-44DAE90B93A1} = {CAEDAC09-7FD4-4DD7-9234-13C867B50428}
 		{428D4F92-677C-4679-8792-5D1A5B2F3EB8} = {CAEDAC09-7FD4-4DD7-9234-13C867B50428}
+		{2A97D94A-11ED-4704-9FF3-6DFAEEB71DE2} = {601F2FB5-2D15-411B-91C9-4CF76743895C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ADE985F6-4034-4705-9DB6-EE7529164752}

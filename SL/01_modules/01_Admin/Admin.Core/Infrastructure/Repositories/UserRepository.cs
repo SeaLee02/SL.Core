@@ -1,4 +1,5 @@
 ﻿using SL.Data.Abstractions;
+using SL.Data.Abstractions.Login;
 using SL.Data.Core.Repository;
 using SL.Mkh.Admin.Core.Domain.User;
 using System;

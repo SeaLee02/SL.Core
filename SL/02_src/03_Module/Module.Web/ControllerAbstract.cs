@@ -16,7 +16,7 @@ namespace SL.Module.Web
     [Route("api/[area]/[controller]/[action]")]
     [ApiController]
     //自定义复杂的策略授权
-    //[Authorize(PolicyConst.TOKEN_POLICY)]
+    [Authorize(PolicyConst.TOKEN_POLICY)]
     //数据验证
     [ValidateResultFormat]
     public abstract class ControllerAbstract : ControllerBase
