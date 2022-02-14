@@ -8,6 +8,7 @@
 	  <ProjectReference Include="..\..\..\02_src\02_Data\Data.Core\Data.Core.csproj" />
 	  <ProjectReference Include="..\..\..\02_src\03_Module\Module.Abstractions\Module.Abstractions.csproj" />
 	  <ProjectReference Include="..\..\..\02_src\04_Auth\Auth.Abstractions\Auth.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\..\02_src\04_Auth\Auth.Jwt\Auth.Jwt.csproj" />
 	</ItemGroup>
 
 </Project>

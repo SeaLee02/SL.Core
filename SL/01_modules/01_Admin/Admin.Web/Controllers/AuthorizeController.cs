@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 namespace Lh.Mkh.Admin.Web.Controllers
 {
     [SwaggerTag("身份认证")]
+    [AllowAnonymous]
     public class AuthorizeController : BaseController
     {
         private readonly IAuthorizeService _authorizeService;
@@ -28,11 +29,19 @@ namespace Lh.Mkh.Admin.Web.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost]
-        [AllowAnonymous]
+    
         public Task<IResultModel> Login(LoginDto dto)
         {
             return _authorizeService.Login(dto);
         }
+
+        [HttpGet]
+        public Task<IResultModel> RefreshToken([FromQuery] string token = "") 
+        {
+            return _authorizeService.RefreshToken(token);
+        }
+
+
 
         [HttpGet]
         public Task<IResultModel> Test()

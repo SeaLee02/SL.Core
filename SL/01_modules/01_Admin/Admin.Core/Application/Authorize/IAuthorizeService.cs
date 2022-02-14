@@ -16,5 +16,12 @@ namespace Lh.Mkh.Admin.Core.Application.Authorize
         /// <param name="dto"></param>
         /// <returns></returns>
         Task<IResultModel> Login(LoginDto dto);
+
+        /// <summary>
+        /// 刷新Token
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        Task<IResultModel> RefreshToken(string token);
     }
 }
