@@ -72,7 +72,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mapper", "02_src\06_Mapper\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module.Core", "02_src\03_Module\Module.Core\Module.Core.csproj", "{B837AB39-4560-4B77-9D47-71166DF9EA19}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_Admin", "01_Admin", "{CAEDAC09-7FD4-4DD7-9234-13C867B50428}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00_Admin", "00_Admin", "{CAEDAC09-7FD4-4DD7-9234-13C867B50428}"
 	ProjectSection(SolutionItems) = preProject
 		01_modules\01_Admin\Directory.Build.props = 01_modules\01_Admin\Directory.Build.props
 	EndProjectSection
