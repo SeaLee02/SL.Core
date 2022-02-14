@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Options;
 using SL.Auth.Abstractions;
 using SL.Auth.Abstractions.Annotations;
@@ -19,11 +20,13 @@ namespace SL.Auth.Core
         //IOptionsMonitor 热更新
         private readonly IOptionsMonitor<AuthOptions> _options;
         private readonly IPermissionValidateHandler _permissionValidateHandler;
+        private readonly IHttpContextAccessor _accessor;
 
-        public PermissionAuthorizationHandler(IOptionsMonitor<AuthOptions> options, IPermissionValidateHandler permissionValidateHandler)
+        public PermissionAuthorizationHandler(IOptionsMonitor<AuthOptions> options, IPermissionValidateHandler permissionValidateHandler, IHttpContextAccessor accessor)
         {
             _options = options;
             _permissionValidateHandler = permissionValidateHandler;
+            this._accessor = accessor;
         }
 
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
@@ -33,8 +36,7 @@ namespace SL.Auth.Core
             {
                 return;
             }
-
-            var httpContext = (context.Resource as DefaultHttpContext)!.HttpContext;
+            var httpContext = _accessor.HttpContext;
 
             //禁用权限验证
             if (!_options.CurrentValue.EnablePermissionVerify)

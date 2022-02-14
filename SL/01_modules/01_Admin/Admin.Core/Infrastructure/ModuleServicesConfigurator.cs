@@ -21,7 +21,7 @@ namespace SL.Mkh.Admin.Core.Infrastructure
             services.AddScoped<IUserPermissionResolver, DefaultUserPermissionResolver>();
 
             ////后台任务执行
-            services.AddHostedService<TimedBackgroundJob>();
+            //services.AddHostedService<TimedBackgroundJob>();
 
 
         }

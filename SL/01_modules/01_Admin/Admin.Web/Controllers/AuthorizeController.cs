@@ -30,8 +30,14 @@ namespace Lh.Mkh.Admin.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         public Task<IResultModel> Login(LoginDto dto)
-        { 
+        {
             return _authorizeService.Login(dto);
+        }
+
+        [HttpGet]
+        public Task<IResultModel> Test()
+        {
+            return Task.FromResult(ResultModel.Success());
         }
     }
 }
