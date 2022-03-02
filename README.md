@@ -20,4 +20,4 @@
 - [x] 中介者MediatR 处理进程内的事件
 - [x] CAP,RabbitMQ 处理 进程之间的消息
 - [x] 配套的代码生成工具，不写一行代码可以生成一个模块
-- [] IdentityServer4 认证
+- [ ] IdentityServer4 认证
