@@ -3,6 +3,7 @@
 
 # 技术栈
 - [x] 依赖注入(采用微软原生,AutoFac待)
+- [x] 统一错误处理
 - [x] AOP(Castle DynamicProxy)
 - [x] AutoMapper进行实体映射
 - [x] JWT自定义授权
@@ -21,3 +22,11 @@
 - [x] CAP,RabbitMQ 处理 进程之间的消息
 - [x] 配套的代码生成工具，不写一行代码可以生成一个模块
 - [ ] IdentityServer4 认证
+- [x] Msbuld 使用
+
+
+# 说明
+架构基本搭建完成,具体的表操作代码还没有加~~
+
+# 使用
+Vs2019+打开项目,找到 00_build/Nuget.Config 文件，修改 MuNuget  目录填写 sln同级的 05_nuget 文件夹
