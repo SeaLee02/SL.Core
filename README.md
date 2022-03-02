@@ -2,7 +2,7 @@
 框架用于模块化开发,也适用于微服务开发模式。采用.net core 3.1 开发的webapi项目。
 
 # 技术栈
-- [x] 依赖注入(采用微软原生,看到时候需要改成AutoFac不)
+- [x] 依赖注入(采用微软原生,AutoFac待)
 - [x] AOP(Castle DynamicProxy)
 - [x] AutoMapper进行实体映射
 - [x] JWT自定义授权
