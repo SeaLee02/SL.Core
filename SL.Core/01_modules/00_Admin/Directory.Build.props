@@ -3,7 +3,7 @@
 		<!--如果Id发生更改,住项目里面需要把旧的删除(生成module文件夹的时候,旧的不会删除,需要手动)-->
 		<Id>1001</Id>
 		<Code>Admin</Code>
-		<Name>...管理</Name>
+		<Name>基础管理</Name>
 		<Authors>SeaLee</Authors>
 		<Icon>permission</Icon>
 		<Version>0.0.1</Version>
