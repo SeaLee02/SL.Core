@@ -19,13 +19,13 @@ namespace System.Linq
         /// <param name="sugarQueryable"></param>
         /// <param name="paging"></param>
         /// <returns></returns>
-        public static async Task<IResultModel> ToPaginationAsync<TResult>(this ISugarQueryable<TResult> sugarQueryable, Paging paging)
+        public static async Task<QueryResultModel<TResult>> ToPaginationAsync<TResult>(this ISugarQueryable<TResult> sugarQueryable, Paging paging)
         {
             RefAsync<int> totalCount = 0;
             var rows = await sugarQueryable.ToPageListAsync(paging.Index, paging.Size, totalCount);
             paging.TotalCount = totalCount;
 
-            return ResultModel.Success(new QueryResultModel<TResult>(rows, paging.TotalCount));
+            return new QueryResultModel<TResult>(rows, paging.TotalCount);
         }
 
 

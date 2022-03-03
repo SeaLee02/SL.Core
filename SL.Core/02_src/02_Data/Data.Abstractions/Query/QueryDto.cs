@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace SL.Data.Abstractions.Query
@@ -17,6 +18,7 @@ namespace SL.Data.Abstractions.Query
         /// <summary>
         /// 转换成Paging分页类
         /// </summary>
+        [JsonIgnore]
         public Paging Paging
         {
             get
