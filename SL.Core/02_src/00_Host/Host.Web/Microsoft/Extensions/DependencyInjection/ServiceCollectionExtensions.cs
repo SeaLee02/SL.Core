@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using SL.Module.Abstractions;
 using SL.Utils.Json.Converters;
 using SL.Module.Web;
+using Microsoft.Extensions.Primitives;
+using SL.Utils.Helpers;
 
 namespace SL.Host.Web
 {
@@ -88,11 +90,38 @@ namespace SL.Host.Web
         /// <returns></returns>
         public static IServiceCollection AddCache(this IServiceCollection services, IConfiguration cfg)
         {
+            //内存
             var builder = services.AddCache();
-
-           
+            //Redis缓存
+            services.UseRedis(cfg);
             return services;
         }
 
+        /// <summary>
+        /// 添加缓存
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="cfg"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddEvent(this IServiceCollection services, IConfiguration cfg)
+        {
+            //中介者模式
+            var builder = services.AddMediatRService();
+            services.AddRabbitMQ(cfg);
+            return services;
+        }
+
+        /// <summary>
+        /// 监听配置
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        public static void CheckChangeToken(this IServiceCollection services, IConfiguration configuration)
+        {
+            ChangeToken.OnChange(() => configuration.GetReloadToken(), () =>
+            {
+                ConsoleHelper.WriteColorLine("配置发生变化", ConsoleColor.Blue);
+            });
+        }
     }
 }

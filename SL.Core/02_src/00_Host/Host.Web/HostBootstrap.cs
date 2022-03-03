@@ -25,6 +25,7 @@
         public void Run<TStartup>() where TStartup : StartupAbstract
         {
             Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(_args)
+                .AddApolloConfig()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     var options = LoadOptions();

@@ -118,7 +118,7 @@ namespace SL.Host.Web.Swagger
         {
             //手动开启或者开发模式以及本地模式下才会启用swagger功能
             return hostOptions.Swagger || modules.HostEnvironment.IsDevelopment() ||
-                   modules.HostEnvironment.EnvironmentName.Equals("Local");
+               modules.HostEnvironment.EnvironmentName.Equals("Local");
         }
     }
 }

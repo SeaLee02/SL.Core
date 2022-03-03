@@ -1,5 +1,6 @@
 ﻿using CSRedis;
 using Microsoft.Extensions.Configuration;
+using SL.Utils.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection UseRedis(this IServiceCollection services, IConfiguration cfg)
         {
-            //注册成全局单例,使用请解析
-            var rds = new CSRedisClient(cfg["RedisStr"]);
-            services.AddSingleton(rds);
+            if (cfg["Redis:IsEnable"].ToBool())
+            {   
+                //注册成全局单例,使用请解析
+                var rds = new CSRedisClient(cfg["RedisStr"]);
+                services.AddSingleton(rds);
+            }
 
             return services;
         }

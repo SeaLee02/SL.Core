@@ -73,6 +73,12 @@ namespace SL.Host.Web
 
             //添加数据库            
             services.AddSqlSugarDb(_env,modules);
+
+            //添加事件
+            services.AddEvent(_cfg);
+
+            //监听配置发送更改
+            services.CheckChangeToken(_cfg);
         }
 
 
