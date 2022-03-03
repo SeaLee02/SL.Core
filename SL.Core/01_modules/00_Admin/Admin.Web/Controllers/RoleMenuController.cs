@@ -39,9 +39,9 @@ namespace SL.Mkh.Admin.Web.Controllers
         /// <param name="primaryKey">主键Id</param>
         /// <returns></returns>
         [HttpGet("{primaryKey}")]
-        public async Task<IResultModel> GetInfoById(Guid primaryKey)
+        public async Task<IResultModel> Edit(Guid primaryKey)
         {
-            return await this._roleMenuService.GetInfoById(primaryKey);
+            return await this._roleMenuService.Edit(primaryKey);
         }
 
         /// <summary>

@@ -11,4 +11,21 @@
 	  <ProjectReference Include="..\..\..\02_src\06_Mapper\Mapper\Mapper.csproj" />
 	  <ProjectReference Include="..\..\..\02_src\07_Excel\Excel.Aspose\Excel.Aspose.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Infrastructure\Repositories\Button\" />
+	  <Folder Include="Infrastructure\Repositories\Dict\" />
+	  <Folder Include="Infrastructure\Repositories\MenuGroup\" />
+	  <Folder Include="Infrastructure\Repositories\Menu\" />
+	  <Folder Include="Infrastructure\Repositories\Org\" />
+	  <Folder Include="Infrastructure\Repositories\Permission\" />
+	  <Folder Include="Infrastructure\Repositories\Privilege\" />
+	  <Folder Include="Infrastructure\Repositories\RoleButton\" />
+	  <Folder Include="Infrastructure\Repositories\RoleMenu\" />
+	  <Folder Include="Infrastructure\Repositories\RolePermission\" />
+	  <Folder Include="Infrastructure\Repositories\Role\" />
+	  <Folder Include="Infrastructure\Repositories\Tenant\" />
+	  <Folder Include="Infrastructure\Repositories\UserOrg\" />
+	  <Folder Include="Infrastructure\Repositories\UserRole\" />
+	  <Folder Include="Infrastructure\Repositories\User\" />
+	</ItemGroup>
 </Project>

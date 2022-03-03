@@ -15,7 +15,7 @@ namespace SL.Mkh.Admin.Core.Application.User.Dto
 	    /// <summary>
 	    /// 主键
 	    /// </summary>		
-	    public Guid UserId { get; set; }
+	    public Guid? UserId { get; set; }
 	          
 	    /// <summary>
 	    /// 租户Id
@@ -56,11 +56,6 @@ namespace SL.Mkh.Admin.Core.Application.User.Dto
 	    /// 是否启用
 	    /// </summary>		
 	    public bool IsEnabled { get; set; }
-	          
-	    /// <summary>
-	    /// 创建人组织Id
-	    /// </summary>		
-	    public Guid CreatedOrg { get; set; }
 	          
     }
 }

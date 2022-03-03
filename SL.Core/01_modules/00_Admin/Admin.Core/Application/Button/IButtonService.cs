@@ -26,7 +26,7 @@ namespace SL.Mkh.Admin.Core.Application.Button
         /// </summary>
         /// <param name="primaryKey"></param>
         /// <returns></returns>
-        Task<IResultModel> GetInfoById(Guid primaryKey);
+        Task<IResultModel> Edit(Guid primaryKey);
 
         /// <summary>
         /// 新增

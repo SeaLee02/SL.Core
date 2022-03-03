@@ -55,7 +55,7 @@ namespace SL.Mkh.Admin.Core.Application.User
         /// </summary>
         /// <param name="primaryKey"></param>
         /// <returns></returns>
-        public async Task<IResultModel> GetInfoById(Guid primaryKey)
+        public async Task<IResultModel> Edit(Guid primaryKey)
         {
             var entity = await this._userRepository.Get(primaryKey);
             var result = _mapper.Map<UserDto>(entity);

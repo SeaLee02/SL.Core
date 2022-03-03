@@ -18,6 +18,11 @@ namespace SL.Data.Abstractions.Login
         public Guid? TenantId { get; }
 
         /// <summary>
+        /// 组织编号
+        /// </summary>
+        public Guid? OrgId { get; }
+
+        /// <summary>
         /// 账户编号
         /// </summary>
         public Guid? UserId { get; }

@@ -15,7 +15,7 @@ namespace SL.Mkh.Admin.Core.Application.Tenant.Dto
 	    /// <summary>
 	    /// 主键
 	    /// </summary>		
-	    public Guid TenantId { get; set; }
+	    public Guid? TenantId { get; set; }
 	          
 	    /// <summary>
 	    /// 租户名称

@@ -55,7 +55,7 @@ namespace SL.Mkh.Admin.Core.Application.Permission
         /// </summary>
         /// <param name="primaryKey"></param>
         /// <returns></returns>
-        public async Task<IResultModel> GetInfoById(Guid primaryKey)
+        public async Task<IResultModel> Edit(Guid primaryKey)
         {
             var entity = await this._permissionRepository.Get(primaryKey);
             var result = _mapper.Map<PermissionDto>(entity);

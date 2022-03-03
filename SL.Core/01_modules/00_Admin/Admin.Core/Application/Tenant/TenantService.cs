@@ -55,7 +55,7 @@ namespace SL.Mkh.Admin.Core.Application.Tenant
         /// </summary>
         /// <param name="primaryKey"></param>
         /// <returns></returns>
-        public async Task<IResultModel> GetInfoById(Guid primaryKey)
+        public async Task<IResultModel> Edit(Guid primaryKey)
         {
             var entity = await this._tenantRepository.Get(primaryKey);
             var result = _mapper.Map<TenantDto>(entity);

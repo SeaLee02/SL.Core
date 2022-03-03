@@ -15,5 +15,18 @@ namespace SL.Mkh.Admin.Core.Infrastructure.Repositories
         public UserRepository(IUnitOfWork unitOfWork, IUserResolver userResolver) : base(unitOfWork, userResolver)
         {
         }
+
+
+        /// <summary>
+        /// 登陆
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="passWord"></param>
+        /// <returns></returns>
+        public Task<UserEntity> Login(string userName,string passWord)
+        {
+            return Find().Where(a=>a.UserName==userName&&a.PassWord==passWord)
+                .SingleAsync();
+        }
     }
 }

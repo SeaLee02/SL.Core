@@ -103,6 +103,15 @@ namespace SL.Data.Core.Repository
                     }
                     continue;
                 }
+                if (colName.Equals("CreatedTime"))
+                {
+                    var createdTime = pro.GetValue(entity);
+                    if (createdTime == null)
+                    {
+                        pro.SetValue(entity, DateTime.Now);
+                    }
+                    continue;
+                }
                 if (colName.Equals("TenantId"))
                 {
                     var tenantId = pro.GetValue(entity);
@@ -111,13 +120,13 @@ namespace SL.Data.Core.Repository
                         pro.SetValue(entity, _userResolver.TenantId);
                     }
                     continue;
-                }
-                if (colName.Equals("CreatedTime"))
+                }               
+                if (pro.Name.Equals("CreatedOrg"))
                 {
-                    var createdTime = pro.GetValue(entity);
-                    if (createdTime == null)
+                    var manageOrg = (Guid?)pro.GetValue(entity);
+                    if (manageOrg == null || manageOrg == Guid.Empty)
                     {
-                        pro.SetValue(entity, DateTime.Now);
+                        pro.SetValue(entity, this._userResolver.OrgId);
                     }
                 }
             }

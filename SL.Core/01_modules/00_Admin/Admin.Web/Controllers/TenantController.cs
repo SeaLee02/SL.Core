@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SL.Mkh.Admin.Core.Application.Tenant;
 using SL.Mkh.Admin.Core.Application.Tenant.Dto;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SL.Mkh.Admin.Web.Controllers
 {
-    
+
     [SwaggerTag("租户表Id管理")]
     public class TenantController : BaseController
     {
@@ -39,9 +40,9 @@ namespace SL.Mkh.Admin.Web.Controllers
         /// <param name="primaryKey">主键Id</param>
         /// <returns></returns>
         [HttpGet("{primaryKey}")]
-        public async Task<IResultModel> GetInfoById(Guid primaryKey)
+        public async Task<IResultModel> Edit(Guid primaryKey)
         {
-            return await this._tenantService.GetInfoById(primaryKey);
+            return await this._tenantService.Edit(primaryKey);
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace SL.Mkh.Admin.Web.Controllers
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost]     
         public async Task<IResultModel> Add(TenantAddDto dto)
         {
 

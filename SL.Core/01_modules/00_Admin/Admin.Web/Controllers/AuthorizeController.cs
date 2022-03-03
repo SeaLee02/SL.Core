@@ -28,8 +28,7 @@ namespace SL.Mkh.Admin.Web.Controllers
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        [HttpPost]
-    
+        [HttpPost]    
         public Task<IResultModel> Login(LoginDto dto)
         {
             return _authorizeService.Login(dto);

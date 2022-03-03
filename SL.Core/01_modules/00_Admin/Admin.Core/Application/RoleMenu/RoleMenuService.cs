@@ -55,7 +55,7 @@ namespace SL.Mkh.Admin.Core.Application.RoleMenu
         /// </summary>
         /// <param name="primaryKey"></param>
         /// <returns></returns>
-        public async Task<IResultModel> GetInfoById(Guid primaryKey)
+        public async Task<IResultModel> Edit(Guid primaryKey)
         {
             var entity = await this._roleMenuRepository.Get(primaryKey);
             var result = _mapper.Map<RoleMenuDto>(entity);

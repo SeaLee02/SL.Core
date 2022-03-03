@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SL.Mkh.Admin.Core.Application.Role;
 using SL.Mkh.Admin.Core.Application.Role.Dto;
@@ -39,9 +40,9 @@ namespace SL.Mkh.Admin.Web.Controllers
         /// <param name="primaryKey">主键Id</param>
         /// <returns></returns>
         [HttpGet("{primaryKey}")]
-        public async Task<IResultModel> GetInfoById(Guid primaryKey)
+        public async Task<IResultModel> Edit(Guid primaryKey)
         {
-            return await this._roleService.GetInfoById(primaryKey);
+            return await this._roleService.Edit(primaryKey);
         }
 
         /// <summary>
@@ -52,7 +53,6 @@ namespace SL.Mkh.Admin.Web.Controllers
         [HttpPost]
         public async Task<IResultModel> Add(RoleAddDto dto)
         {
-
             return await _roleService.Add(dto);
         }
 

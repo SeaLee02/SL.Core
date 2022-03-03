@@ -15,7 +15,7 @@ namespace SL.Mkh.Admin.Core.Application.Org.Dto
 	    /// <summary>
 	    /// 主键
 	    /// </summary>		
-	    public Guid OrgId { get; set; }
+	    public Guid? OrgId { get; set; }
 	          
 	    /// <summary>
 	    /// 主键
@@ -56,11 +56,6 @@ namespace SL.Mkh.Admin.Core.Application.Org.Dto
 	    /// 是否启用
 	    /// </summary>		
 	    public bool IsEnabled { get; set; }
-	          
-	    /// <summary>
-	    /// 创建人组织Id
-	    /// </summary>		
-	    public Guid CreatedOrg { get; set; }
 	          
     }
 }

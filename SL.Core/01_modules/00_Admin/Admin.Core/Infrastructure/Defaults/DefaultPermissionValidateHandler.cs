@@ -30,7 +30,8 @@ namespace SL.Mkh.Admin.Core.Infrastructure.Defaults
             var area = routeValues["area"];
             var controller = routeValues["controller"];
             var action = routeValues["action"];
-            return permissions.Any(m => m.EqualsIgnoreCase($"{area}_{controller}_{action}_{httpMethod}"));
+            //return true;
+            return permissions.Any(m => m.EqualsIgnoreCase($"{area}_{controller}_{action}_{httpMethod}"));            
         }
     }
 }

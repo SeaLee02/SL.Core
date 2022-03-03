@@ -36,6 +36,21 @@ namespace SL.Data.Core.Login
             }
         }
 
+        public Guid? OrgId
+        {
+            get
+            {
+                var orgId = _contextAccessor?.HttpContext?.User.FindFirst(SLClaimTypes.ORG_ID);
+
+                if (orgId != null && orgId.Value.NotNull())
+                {
+                    return new Guid(orgId.Value);
+                }
+
+                return null;
+            }
+        }
+
         /// <summary>
         /// 账户编号
         /// </summary>

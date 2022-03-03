@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SL.Mkh.Admin.Core.Application.User;
 using SL.Mkh.Admin.Core.Application.User.Dto;
@@ -39,9 +40,9 @@ namespace SL.Mkh.Admin.Web.Controllers
         /// <param name="primaryKey">主键Id</param>
         /// <returns></returns>
         [HttpGet("{primaryKey}")]
-        public async Task<IResultModel> GetInfoById(Guid primaryKey)
+        public async Task<IResultModel> Edit(Guid primaryKey)
         {
-            return await this._userService.GetInfoById(primaryKey);
+            return await this._userService.Edit(primaryKey);
         }
 
         /// <summary>
@@ -52,7 +53,6 @@ namespace SL.Mkh.Admin.Web.Controllers
         [HttpPost]
         public async Task<IResultModel> Add(UserAddDto dto)
         {
-
             return await _userService.Add(dto);
         }
 

@@ -15,7 +15,7 @@ namespace SL.Mkh.Admin.Core.Application.Role.Dto
 	    /// <summary>
 	    /// 角色Id
 	    /// </summary>		
-	    public Guid RoleId { get; set; }
+	    public Guid? RoleId { get; set; }
 	          
 	    /// <summary>
 	    /// 主键
@@ -36,11 +36,6 @@ namespace SL.Mkh.Admin.Core.Application.Role.Dto
 	    /// 是否启用
 	    /// </summary>		
 	    public bool IsEnabled { get; set; }
-	          
-	    /// <summary>
-	    /// 创建人组织Id
-	    /// </summary>		
-	    public Guid CreatedOrg { get; set; }
 	          
     }
 }

@@ -18,19 +18,20 @@ namespace SL.Mkh.Admin.Core.Application.Authorize
     public class AuthorizeService : IAuthorizeService
     {
         private readonly IUserRepository _userRepository;
-        private readonly ICredentialBuilder _credentialBuilder;
+        private readonly JwtHelper _jwtHelper;
         private readonly JwtOptions _options;
 
-        public AuthorizeService(IUserRepository userRepository, ICredentialBuilder credentialBuilder, JwtOptions options)
+
+        public AuthorizeService(IUserRepository userRepository, JwtHelper jwtHelper, JwtOptions options)
         {
             this._userRepository = userRepository;
-            this._credentialBuilder = credentialBuilder;
+            this._jwtHelper = jwtHelper;
             this._options = options;
         }
 
         public async Task<IResultModel> Login(LoginDto dto)
         {
-            var accountEntity = await _userRepository.Get(dto.UserName);
+            var accountEntity = await _userRepository.Login(dto.UserName, dto.PassWord);
             if (accountEntity == null)
                 return ResultModel.Failed("账号或者密码不对");
             var claims = new List<Claim>
@@ -45,12 +46,12 @@ namespace SL.Mkh.Admin.Core.Application.Authorize
                     //角色
                     //公司/部门
             };
-            var tokenJwt = await _credentialBuilder.Build(claims);
-            return tokenJwt;
+            var tokenJwt = _jwtHelper.Build(claims);
+            return ResultModel.Success(tokenJwt);
         }
 
 
-        public async Task<IResultModel> RefreshToken(string token) 
+        public async Task<IResultModel> RefreshToken(string token)
         {
             if (token.IsNull())
                 return ResultModel.Failed("token无效，请重新登录！");
@@ -74,8 +75,8 @@ namespace SL.Mkh.Admin.Core.Application.Authorize
                     //公司/部门
             };
 
-            var tokenJwt = await _credentialBuilder.Build(claims);
-            return tokenJwt;
+            var tokenJwt =  _jwtHelper.Build(claims);
+            return ResultModel.Success(tokenJwt);
         }
 
 
