@@ -20,11 +20,11 @@ namespace SL.Mkh.Admin.Core.Application.RolePermission.Dto
 	    /// 角色Id
 	    /// </summary>		
 	    public Guid RoleId { get; set; }
-	          
-	    /// <summary>
-	    /// 权限Id
-	    /// </summary>		
-	    public Guid PermissionId { get; set; }
-	          
-    }
+
+		/// <summary>
+		/// 权限Id
+		/// </summary>	
+		public string PermissionCode { get; set; }
+
+	}
 }

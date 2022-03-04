@@ -7,6 +7,7 @@ using SL.Utils.Models;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,7 @@ namespace SL.Mkh.Admin.Web.Controllers
         /// </summary>
         /// <param name="primaryKey">主键Id</param>
         /// <returns></returns>
+        [Description("详情")]
         [HttpGet("{primaryKey}")]
         public async Task<IResultModel> Edit(Guid primaryKey)
         {
@@ -50,7 +52,7 @@ namespace SL.Mkh.Admin.Web.Controllers
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        [HttpPost]     
+        [HttpPost]
         public async Task<IResultModel> Add(TenantAddDto dto)
         {
 

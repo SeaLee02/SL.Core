@@ -9,10 +9,15 @@ namespace SL.Utils.Extensions
 {
 	public static class SLCollectionExtensions
 	{
-		public static bool IsNullOrEmpty<T>(this ICollection<T> source)
+		public static bool IsNull<T>(this ICollection<T> source)
 		{
 			return source == null || source.Count <= 0;
 		}
+		public static bool NotNull<T>(this ICollection<T> source)
+		{
+			return source != null || source.Count > 0;
+		}
+
 
 		public static bool AddIfNotContains<T>(this ICollection<T> source, T item)
 		{

@@ -26,7 +26,7 @@ namespace SL.Mkh.Admin.Core.Domain.RolePermission
 		/// <summary>
 		/// 权限Id
 		/// </summary>	
-		public Guid PermissionId { get; set; }
+		public string PermissionCode { get; set; }
 		      
     }
 

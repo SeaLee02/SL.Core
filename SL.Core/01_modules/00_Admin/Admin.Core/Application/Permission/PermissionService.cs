@@ -1,8 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
+using SL.Auth.Abstractions;
+using SL.Data.Abstractions.Annotations;
 using SL.Data.Abstractions.Query;
 using SL.Excel.Aspose;
 using SL.Mkh.Admin.Core.Application.Permission.Dto;
 using SL.Mkh.Admin.Core.Domain.Permission;
+using SL.Mkh.Admin.Core.Domain.RolePermission;
+using SL.Utils.Extensions;
 using SL.Utils.Helpers;
 using SL.Utils.Map;
 using SL.Utils.Models;
@@ -19,15 +23,19 @@ namespace SL.Mkh.Admin.Core.Application.Permission
     /// <summary>
     /// 接口权限地址
     /// </summary>
-    public class PermissionService: IPermissionService
+    public class PermissionService : IPermissionService
     {
         private readonly IMapper _mapper;
         private readonly IPermissionRepository _permissionRepository;
+        private readonly IPermissionResolver _permissionResolver;
+        private readonly IRolePermissionRepository _rolePermissionRepository;
 
-        public PermissionService(IMapper mapper, IPermissionRepository permissionRepository)
+        public PermissionService(IMapper mapper, IPermissionRepository permissionRepository, IPermissionResolver permissionResolver, IRolePermissionRepository rolePermissionRepository)
         {
             this._mapper = mapper;
             this._permissionRepository = permissionRepository;
+            this._permissionResolver = permissionResolver;
+            this._rolePermissionRepository = rolePermissionRepository; 
         }
 
         /// <summary>
@@ -38,7 +46,7 @@ namespace SL.Mkh.Admin.Core.Application.Permission
         public async Task<IResultModel> GetList(PermissionQueryDto dto)
         {
             //01直接走实体映射
-            var result = await this._permissionRepository.Find().Filter("!=0").Select(a => new PermissionListDto
+            var result = await this._permissionRepository.Find().Select(a => new PermissionListDto
             {
                 PermissionId = a.PermissionId.SelectAll()
             }).ToPaginationAsync(dto.Paging);
@@ -154,5 +162,33 @@ namespace SL.Mkh.Admin.Core.Application.Permission
             }
             return buff;
         }
+
+        /// <summary>
+        /// 初始化权限表数据
+        /// </summary>
+        /// <param name="moduleCode"></param>
+        /// <returns></returns>
+        [Transaction]
+        public async Task<IResultModel> InitPermission(string moduleCode)
+        {
+            string moduleCodeLower = moduleCode.ToLower();
+            var oldCodeList = await this._permissionRepository.Find().Where(a => SqlFunc.StartsWith(moduleCodeLower, a.Code)).Select(a => a.Code).ToListAsync();
+            List<string> newCodeList = _permissionResolver.GetPermissions(moduleCode).Where(a=>a.Mode== PermissionMode.Authorization).Select(a => a.Code).ToList();
+            var delAndAdd = oldCodeList.GetDelAndAdd(newCodeList);
+            var needDel = delAndAdd.delList;
+            await _permissionRepository.Delete(a => needDel.Contains(a.Code));
+            await _rolePermissionRepository.Delete(a => needDel.Contains(a.PermissionCode));
+            if (delAndAdd.addList.NotNull())
+            {
+                var needAdd = delAndAdd.addList.Select(a => new PermissionEntity
+                {
+                    Code = a,
+                    Name=String.Empty
+                }).ToList();
+                await this._permissionRepository.AddList(needAdd);
+            }
+            return ResultModel.Success("初始化权限成功");
+        }
+
     }
 }

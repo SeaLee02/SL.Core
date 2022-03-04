@@ -37,6 +37,7 @@ namespace SL.Mkh.Admin.Core.Application.Tenant
         /// <returns></returns>
         public async Task<IResultModel> GetList(TenantQueryDto dto)
         {
+            await Task.Delay(5*1000);
             //01直接走实体映射
             var result = await this._tenantRepository.Find().Filter("!=0").Select(a => new TenantListDto
             {

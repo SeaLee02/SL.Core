@@ -103,6 +103,7 @@ namespace SL.Host.Web.Swagger
                         c.DefaultModelsExpandDepth(-1);
                     }
                 });
+               
             }
 
             return app;

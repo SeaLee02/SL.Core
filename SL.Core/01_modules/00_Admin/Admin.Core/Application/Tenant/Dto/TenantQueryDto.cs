@@ -14,7 +14,6 @@ namespace SL.Mkh.Admin.Core.Application.Tenant.Dto
     /// </summary>
     public class TenantQueryDto: QueryDto
     {
-        [JsonIgnore]
-        public string Name  { get; set; }
+
     }
 }

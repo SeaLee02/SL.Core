@@ -83,7 +83,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Core", "01_modules\00
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin.Web", "01_modules\00_Admin\Admin.Web\Admin.Web.csproj", "{2AF4B2DE-11C5-4319-A88F-1E2B1B83ACE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus", "02_src\08_Event\EventBus\EventBus.csproj", "{AC7CBFAA-6005-4841-9E9B-EF68DBF330C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "02_src\08_Event\EventBus\EventBus.csproj", "{AC7CBFAA-6005-4841-9E9B-EF68DBF330C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00_Solution Items", "00_Solution Items", "{27024592-B634-4D94-818D-B132345E5978}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

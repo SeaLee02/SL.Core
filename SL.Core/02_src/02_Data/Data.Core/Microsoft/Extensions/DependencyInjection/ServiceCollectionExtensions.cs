@@ -15,6 +15,9 @@ using SL.Utils.Extensions;
 using SL.Utils.Helpers;
 using SL.Data.Abstractions.Login;
 using SL.Data.Core.Login;
+using SL.Data.Abstractions.Entities;
+using System.Linq.Expressions;
+using System.Linq.Dynamic.Core;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -46,7 +49,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {                                         //AOP动态代理
                 foreach (var dic in module.ApplicationServices)
                 {
-                 
+
                     //添加需要特性事务的服务
                     services.AddScoped(dic.Key, sp =>
                     {
@@ -107,30 +110,23 @@ namespace Microsoft.Extensions.DependencyInjection
                         var dbOptions = module.Options!.Db;
                         if (dbOptions.IsFilter)
                         {
-                            db.GetConnection(dbOptions.ConfigId).QueryFilter.Add(new SqlFilterItem
+                            //动态添加过滤信息
+                            var types = module.LayerAssemblies.Core.GetTypes();
+                            var delList = types.Where(t => typeof(ISoftDelete).IsAssignableFrom(t));
+                            if (delList != null)
                             {
-                                FilterValue = filter =>
+                                foreach (var entityType in delList)
                                 {
-                                    return new SqlFilterResult { Sql = " IsDeleted=0 " };
+                                    var lambda = DynamicExpressionParser.ParseLambda
+                                   (new[] { Expression.Parameter(entityType, "e") },typeof(bool), $"IsDeleted ==false");
+                                    db.GetConnection(dbOptions.ConfigId).QueryFilter.Add(new TableFilterItem<object>(entityType, lambda));
                                 }
-                            });
-
-                            db.GetConnection(dbOptions.ConfigId).QueryFilter.Add(new SqlFilterItem
-                            {
-                                //多表过滤,多表统一设置 a,b.c...以此类推
-                                FilterValue = filter =>
-                                {
-                                    return new SqlFilterResult { Sql = " a.IsDeleted=0 " };
-                                },
-                                IsJoinQuery = true
-                            });
-                        }
-                                                                                     
+                            }
+                        }              
                         if (env.IsDevelopment())
                         {
                             if (dbOptions.IsLogSql)
                             {
-
                                 db.GetConnection((string)dbOptions.ConfigId).Aop.OnLogExecuting = (sql, p) =>
                                 {
                                     ConsoleHelper.WriteSuccessLine(sql);
@@ -138,6 +134,41 @@ namespace Microsoft.Extensions.DependencyInjection
                             }
                         }
                     }
+                    //foreach (var module in modules)
+                    //{
+                    //    var dbOptions = module.Options!.Db;
+                    //    if (dbOptions.IsFilter)
+                    //    {
+                    //        db.GetConnection(dbOptions.ConfigId).QueryFilter.Add(new SqlFilterItem
+                    //        {
+                    //            FilterValue = filter =>
+                    //            {
+                    //                return new SqlFilterResult { Sql = " IsDeleted=0 " };
+                    //            }
+                    //        });
+
+                    //        db.GetConnection(dbOptions.ConfigId).QueryFilter.Add(new SqlFilterItem
+                    //        {
+                    //            //多表过滤,多表统一设置 a,b.c...以此类推
+                    //            FilterValue = filter =>
+                    //            {
+                    //                return new SqlFilterResult { Sql = " a.IsDeleted=0 " };
+                    //            },
+                    //            IsJoinQuery = true
+                    //        });
+                    //    }
+
+                    //    if (env.IsDevelopment())
+                    //    {
+                    //        if (dbOptions.IsLogSql)
+                    //        {
+                    //            db.GetConnection((string)dbOptions.ConfigId).Aop.OnLogExecuting = (sql, p) =>
+                    //            {
+                    //                ConsoleHelper.WriteSuccessLine(sql);
+                    //            };
+                    //        }
+                    //    }
+                    //}
                 });
 
                 return db;

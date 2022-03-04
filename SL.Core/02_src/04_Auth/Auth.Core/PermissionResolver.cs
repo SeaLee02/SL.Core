@@ -36,6 +36,20 @@ namespace SL.Auth.Core
                 if (!controller.Actions.Any())
                     continue;
 
+                PermissionMode permissionMode = PermissionMode.Authorization;
+                var allowAnonymousAttribute_Controller = controller.TypeInfo.CustomAttributes.FirstOrDefault(m => typeof(AllowAnonymousAttribute) == m.AttributeType);
+                if (allowAnonymousAttribute_Controller != null)
+                {
+                    permissionMode = PermissionMode.Anonymous;
+                }
+                else
+                {
+                    var allowLoginAttribute = controller.TypeInfo.CustomAttributes.FirstOrDefault(m => typeof(AllowWhenAuthenticatedAttribute) == m.AttributeType);
+                    if (allowLoginAttribute != null)
+                    {
+                        permissionMode = PermissionMode.Login;
+                    }
+                }
                 foreach (var action in controller.Actions)
                 {
                     var permission = new PermissionDescriptor
@@ -44,7 +58,7 @@ namespace SL.Auth.Core
                         Controller = controller.Name,
                         ModuleCode = controller.Area,
                         HttpMethod = HttpMethod.Get,
-                        Mode = PermissionMode.Authorization
+                        Mode = permissionMode
                     };
 
                     //请求方式

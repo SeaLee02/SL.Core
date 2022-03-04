@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SL.Mkh.Admin.Core.Application.Permission
 {
-     /// <summary>
+    /// <summary>
     /// 接口权限地址
     /// </summary>
     public interface IPermissionService
@@ -62,5 +62,12 @@ namespace SL.Mkh.Admin.Core.Application.Permission
         /// <param name="formFile"></param>
         /// <returns></returns>
         Task<IResultModel> ImportExcel(IFormFile formFile);
+
+        /// <summary>
+        /// 初始化权限表数据
+        /// </summary>
+        /// <param name="moduleCode"></param>
+        /// <returns></returns>
+        Task<IResultModel> InitPermission(string moduleCode);
     }
 }

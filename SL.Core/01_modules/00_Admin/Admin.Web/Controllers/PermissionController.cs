@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SL.Mkh.Admin.Core.Application.Permission;
 using SL.Mkh.Admin.Core.Application.Permission.Dto;
 using SL.Utils.Models;
@@ -12,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace SL.Mkh.Admin.Web.Controllers
 {
-    
+
     [SwaggerTag("接口权限地址管理")]
     public class PermissionController : BaseController
     {
@@ -104,7 +106,15 @@ namespace SL.Mkh.Admin.Web.Controllers
             return await _permissionService.ImportExcel(formFile);
         }
 
-
-
+        /// <summary>
+        /// 初始化权限表
+        /// </summary>
+        /// <param name="moduleCode"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IResultModel> InitPermission([BindRequired] string moduleCode)
+        {
+            return await _permissionService.InitPermission(moduleCode);
+        }
     }
 }

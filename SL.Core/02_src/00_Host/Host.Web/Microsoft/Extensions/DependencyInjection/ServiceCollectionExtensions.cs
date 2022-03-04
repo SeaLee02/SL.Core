@@ -13,6 +13,9 @@ using SL.Utils.Json.Converters;
 using SL.Module.Web;
 using Microsoft.Extensions.Primitives;
 using SL.Utils.Helpers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using SL.Host.Web.Filter;
 
 namespace SL.Host.Web
 {
@@ -30,26 +33,25 @@ namespace SL.Host.Web
         {
             services.AddMvc(c =>
             {
-                //if (hostOptions!.Swagger || env.IsDevelopment())
-                //{
-                //    //API分组约定
-                //    c.Conventions.Add(new ApiExplorerGroupConvention());
-                //}
+                //c.Filters.Add<AuditingFilter>();              
             })
-                .AddJsonOptions(options =>
-                {
-                    //不区分大小写的反序列化
-                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-                    //属性名称使用 camel 大小写
-                    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-                    //最大限度减少字符转义
-                    options.JsonSerializerOptions.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
-                    //添加日期转换器
-                    options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());
-                })
+             .AddNewtonsoftJson(options =>  //替换AddJsonOptions 序列化设置
+             {
+                 //忽略循环引用
+                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                 //不使用驼峰样式的key
+                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                 //设置时间格式
+                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                 //忽略Model中为null的属性
+                 //options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                 //设置本地时间而非UTC时间
+                 options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+             })
                 //添加模块
                 .AddModules(modules);
-
+            //支持编码大全 例如:支持 System.Text.Encoding.GetEncoding("GB2312")  System.Text.Encoding.GetEncoding("GB18030") 
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             return services;
         }
 

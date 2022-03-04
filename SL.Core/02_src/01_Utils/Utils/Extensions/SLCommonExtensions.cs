@@ -336,5 +336,20 @@ namespace SL.Utils.Extensions
         }
 
         #endregion
+
+        /// <summary>
+        /// 获取删除和新增的id
+        /// </summary>
+        /// <param name="oldList"></param>
+        /// <param name="newList"></param>
+        /// <returns></returns>
+        public static (List<T> delList, List<T> addList) GetDelAndAdd<T>(this List<T> oldList, List<T> newList)
+        {
+            //需要删除的集合
+            var delList = oldList.Except(newList).ToList();
+            //需要新增的集合
+            var addList = newList.Except(oldList).ToList();
+            return (delList, addList);
+        }
     }
 }

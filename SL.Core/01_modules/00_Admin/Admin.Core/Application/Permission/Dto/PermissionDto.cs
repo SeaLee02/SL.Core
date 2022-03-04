@@ -14,7 +14,7 @@ namespace SL.Mkh.Admin.Core.Application.Permission.Dto
 	    /// <summary>
 	    /// 主键
 	    /// </summary>		
-	    public Guid PermissionId { get; set; }
+	    public int PermissionId { get; set; }
 	          
 	    /// <summary>
 	    /// 权限名称

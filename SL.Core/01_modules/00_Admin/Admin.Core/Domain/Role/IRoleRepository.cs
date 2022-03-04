@@ -12,6 +12,6 @@ namespace SL.Mkh.Admin.Core.Domain.Role
     /// </summary>
     public interface IRoleRepository : IRepository<RoleEntity>
     {
-
+      
     }
 }

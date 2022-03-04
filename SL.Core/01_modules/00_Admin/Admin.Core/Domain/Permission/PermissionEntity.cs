@@ -16,8 +16,8 @@ namespace SL.Mkh.Admin.Core.Domain.Permission
 		/// <summary>
 		/// 主键
 		/// </summary>	
-		[SugarColumn(IsPrimaryKey = true)]
-		public Guid PermissionId { get; set; }
+		[SugarColumn(IsPrimaryKey = true,IsIdentity =true)]
+		public int PermissionId { get; set; }
 		      
 		/// <summary>
 		/// 权限名称
@@ -28,11 +28,11 @@ namespace SL.Mkh.Admin.Core.Domain.Permission
 		/// 后台接口地址
 		/// </summary>	
 		public string Code { get; set; }
-		      
+
 		/// <summary>
 		/// 是否启用
 		/// </summary>	
-		public bool IsEnabled { get; set; }
+		public bool IsEnabled { get; set; } = true;
 		      
     }
 

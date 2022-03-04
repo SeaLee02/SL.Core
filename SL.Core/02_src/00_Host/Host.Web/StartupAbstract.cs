@@ -72,7 +72,7 @@ namespace SL.Host.Web
             services.AddMkhAuth(_cfg).UseJwt();
 
             //添加数据库            
-            services.AddSqlSugarDb(_env,modules);
+            services.AddSqlSugarDb(_env, modules);
 
             //添加事件
             services.AddEvent(_cfg);
@@ -89,6 +89,9 @@ namespace SL.Host.Web
 
             //使用全局异常处理中间件
             app.UseMiddleware<ExceptionHandleMiddleware>();
+
+            //日志记录
+            app.UseMiddleware<IPLogMiddleware>();
 
             //路由
             app.UseRouting();

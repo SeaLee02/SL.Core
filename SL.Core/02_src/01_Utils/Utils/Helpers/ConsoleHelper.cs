@@ -8,12 +8,16 @@ namespace SL.Utils.Helpers
 {
     public static class ConsoleHelper
     {
+        static object locker = new object();
+
         public static void WriteColorLine(string str, ConsoleColor color)
         {
-            ConsoleColor currentForeColor = Console.ForegroundColor;
-            Console.ForegroundColor = color;
-            Console.WriteLine(str);
-            Console.ForegroundColor = currentForeColor;
+            lock (locker) {
+                ConsoleColor currentForeColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+                Console.WriteLine(str);
+                Console.ForegroundColor = currentForeColor;
+            }          
         }
 
         /// <summary>
@@ -23,7 +27,10 @@ namespace SL.Utils.Helpers
         /// <param name="color">想要打印的颜色</param>
         public static void WriteErrorLine(this string str, ConsoleColor color = ConsoleColor.Red)
         {
-            WriteColorLine(str, color);
+            lock (locker)
+            {
+                WriteColorLine(str, color);
+            }
         }
 
         /// <summary>
@@ -33,7 +40,10 @@ namespace SL.Utils.Helpers
         /// <param name="color">想要打印的颜色</param>
         public static void WriteWarningLine(this string str, ConsoleColor color = ConsoleColor.Yellow)
         {
-            WriteColorLine(str, color);
+            lock (locker)
+            {
+                WriteColorLine(str, color);
+            }
         }
         /// <summary>
         /// 打印正常信息
@@ -42,7 +52,10 @@ namespace SL.Utils.Helpers
         /// <param name="color">想要打印的颜色</param>
         public static void WriteInfoLine(this string str, ConsoleColor color = ConsoleColor.White)
         {
-            WriteColorLine(str, color);
+            lock (locker)
+            {
+                WriteColorLine(str, color);
+            }
         }
         /// <summary>
         /// 打印成功的信息
@@ -51,7 +64,10 @@ namespace SL.Utils.Helpers
         /// <param name="color">想要打印的颜色</param>
         public static void WriteSuccessLine(this string str, ConsoleColor color = ConsoleColor.Green)
         {
-            WriteColorLine(str, color);
+            lock (locker)
+            {
+                WriteColorLine(str, color);
+            }
         }
 
     }
